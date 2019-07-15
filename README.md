@@ -9,6 +9,5 @@ composer require nekofar/virgool
 ```
 
 # Usage
------
 
 We'll certainly need some stuff in here.
