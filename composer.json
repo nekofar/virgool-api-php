@@ -1,0 +1,48 @@
+{
+  "name": "nekofar/virgool",
+  "description": "PHP wrapper for the Virgool API",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Milad Nekofar",
+      "email": "milad@nekofar.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6.0",
+    "ext-json": "*",
+    "psr/http-message": "^1.0",
+    "php-http/client-implementation": "^1.0",
+    "php-http/httplug": "^1.0",
+    "php-http/message-factory": "^1.0",
+    "php-http/discovery": "^1.0"
+  },
+  "require-dev": {
+    "php-http/mock-client": "^1.0",
+    "php-http/message": "^1.0",
+    "guzzlehttp/psr7": "^1.0",
+    "phpunit/phpunit": "^8.3@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nekofar\\Virgool\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nekofar\\Virgool\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+    "phpcs": "vendor/bin/phpcs"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
