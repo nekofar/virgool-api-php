@@ -1,5 +1,6 @@
 {
   "name": "nekofar/virgool",
+  "version": "0.1.0",
   "description": "PHP wrapper for the Virgool API",
   "type": "library",
   "license": "MIT",
