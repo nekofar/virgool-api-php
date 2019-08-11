@@ -59,4 +59,4 @@ composer test
 [3]: https://travis-ci.com/nekofar/virgool-api-php
 [4]: https://codecov.io/gh/nekofar/virgool-api-php
 [5]: https://packagist.org/providers/php-http/client-implementation
-[6]: https://github.com/virgool/docs-api
+[6]: https://virgool.io
