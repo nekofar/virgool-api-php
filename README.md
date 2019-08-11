@@ -1,4 +1,4 @@
-# Virgool Market PHP API
+# Virgool PHP API
 
 [![Packagist Version](https://img.shields.io/packagist/v/nekofar/virgool.svg)][1]
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/nekofar/virgool.svg)][1]
