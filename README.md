@@ -30,8 +30,7 @@ Use your username and password to access your own account.
 ```php
 use \Nekofar\Virgool\Client;
 
-$client = Client::create($config)
-$client->authenticate('username', 'password');
+$client = Client::create('username', 'password')
 
 try {
     $user = $client->getUserInfo();
