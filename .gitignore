@@ -79,3 +79,5 @@ composer.phar
 
 /http-client.env.json
 /.phpunit.result.cache
+/clover.xml
+/.env
