@@ -29,8 +29,7 @@ class FailurePlugin implements Plugin
         RequestInterface $request,
         callable $next,
         callable $first
-    )
-    {
+    ) {
         $promise = $next($request);
 
         return $promise->then(
@@ -49,8 +48,7 @@ class FailurePlugin implements Plugin
     protected function transformResponseToException(
         RequestInterface $request,
         ResponseInterface $response
-    )
-    {
+    ) {
         if ($response->getStatusCode() === 200) {
             $json = json_decode($response->getBody());
             if (isset($json->success) && $json->success === false) {

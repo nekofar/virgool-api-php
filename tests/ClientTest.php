@@ -3,20 +3,11 @@
 namespace Nekofar\Virgool;
 
 
-use Http\Client\HttpClient;
-use Nekofar\Virgool\Exception\InvalidArgumentException;
+use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $dotenv = \Dotenv\Dotenv::create(__DIR__ . '/../');
-        $dotenv->load();
-    }
-
     public function testCreate()
     {
         $username = getenv('VIRGOOL_USERNAME') ?: 'username';
@@ -37,5 +28,13 @@ class ClientTest extends TestCase
         $client = Client::create($config);
 
         var_dump($client->getUserInfo());
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $dotenv = Dotenv::create(__DIR__ . '/../');
+        $dotenv->load();
     }
 }

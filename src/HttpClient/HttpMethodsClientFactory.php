@@ -55,11 +55,13 @@ class HttpMethodsClientFactory
             ['replace' => true]
         );
 
-        // Define default values for given headers.
-        $plugins[] = new HeaderDefaultsPlugin([
-            // Identify the client and it's version.
+        // Identify the client and it's version.
+        $headers = [
             'User-Agent' => Config::CLIENT_NAME . '/' . Config::CLIENT_VERSION,
-        ]);
+        ];
+
+        // Define default values for given headers.
+        $plugins[] = new HeaderDefaultsPlugin($headers);
 
         // Correct Content-Type header value based on the content of the body.
         $plugins[] = new ContentTypePlugin();

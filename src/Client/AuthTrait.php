@@ -52,7 +52,6 @@ trait AuthTrait
             if ($json->success) {
                 return $this->accessToken;
             }
-
         }
 
         $data = ['username' => $username, 'password' => $password];

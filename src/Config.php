@@ -9,7 +9,6 @@ namespace Nekofar\Virgool;
 
 use Http\Client\Common\HttpMethodsClient;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
-use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Message\Authentication;
 use JsonMapper;
 use Nekofar\Virgool\Authentication\BasicAuth;
