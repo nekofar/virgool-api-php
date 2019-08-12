@@ -68,14 +68,6 @@ class Config
         // Authenticate requests sent through the client.
         $plugins[] = new AuthenticationPlugin($this->authentication);
 
-        // Define default values for given headers.
-        $plugins[] = new HeaderDefaultsPlugin([
-            // Identify the client and it's version.
-            'User-Agent' => Config::CLIENT_NAME . '/' . Config::CLIENT_VERSION,
-            // Designate the content to be in JSON format.
-            'Content-Type' => 'application/json',
-        ]);
-
         $httpClient = HttpMethodsClientFactory::create($plugins);
 
         return $httpClient;

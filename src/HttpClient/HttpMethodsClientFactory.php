@@ -9,7 +9,9 @@ namespace Nekofar\Virgool\HttpClient;
 
 use Http\Client\Common\HttpMethodsClient;
 use Http\Client\Common\Plugin\BaseUriPlugin;
+use Http\Client\Common\Plugin\ContentTypePlugin;
 use Http\Client\Common\Plugin\ErrorPlugin;
+use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\PluginClient;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
@@ -49,6 +51,15 @@ class HttpMethodsClientFactory
             $uriFactory->createUri(Config::CLIENT_BASE_URL),
             ['replace' => true]
         );
+
+        // Define default values for given headers.
+        $plugins[] = new HeaderDefaultsPlugin([
+            // Identify the client and it's version.
+            'User-Agent' => Config::CLIENT_NAME . '/' . Config::CLIENT_VERSION,
+        ]);
+
+        // Correct Content-Type header value based on the content of the body.
+        $plugins[] = new ContentTypePlugin();
 
         // Wrap the HttpClient and add some processing logic using plugins.
         $pluginClient = new PluginClient($httpClient, $plugins);
