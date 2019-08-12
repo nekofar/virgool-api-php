@@ -49,11 +49,10 @@ trait AuthTrait
             $resp = $this->httpClient->post('/auth/checktoken', [], $data);
             $json = json_decode($resp->getBody());
 
-            if (!isset($json->success) || !$json->success) {
-                throw new \Exception($json->msg);
+            if ($json->success) {
+                return $this->accessToken;
             }
 
-            return $this->accessToken;
         }
 
         $data = ['username' => $username, 'password' => $password];
@@ -61,11 +60,9 @@ trait AuthTrait
         $resp = $this->httpClient->post('/login', [], $data);
         $json = json_decode($resp->getBody());
 
-        if (!isset($json->success) || !$json->success) {
-            throw new \Exception($json->msg);
+        if ($json->success) {
+            $this->accessToken = $json->token;
         }
-
-        $this->accessToken = $json->token;
 
         return $this->accessToken;
     }

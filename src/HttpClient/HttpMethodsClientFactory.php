@@ -46,6 +46,9 @@ class HttpMethodsClientFactory
         // Transforms responses with HTTP error status codes into exceptions.
         $plugins[] = new ErrorPlugin();
 
+        // Transforms responses with success false into exceptions.
+        $plugins[] = new FailurePlugin();
+
         // Set host, scheme and port and prefix the request path with a path.
         $plugins[] = new BaseUriPlugin(
             $uriFactory->createUri(Config::CLIENT_BASE_URL),
