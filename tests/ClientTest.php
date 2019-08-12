@@ -9,35 +9,33 @@ use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $dotenv = \Dotenv\Dotenv::create(__DIR__ . '/../');
+        $dotenv->load();
+    }
+
     public function testCreate()
     {
-        $username = 'username';
-        $password = 'password';
+        $username = getenv('VIRGOOL_USERNAME') ?: 'username';
+        $password = getenv('VIRGOOL_PASSWORD') ?: 'password';
 
-        $client = Client::create($username, $password);
+        $config = Config::create($username, $password);
+        $client = Client::create($config);
 
         $this->assertInstanceOf(Client::class, $client);
     }
 
-    public function testSetHttpClient()
+    public function testGetUserInfo()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $username = getenv('VIRGOOL_USERNAME') ?: 'username';
+        $password = getenv('VIRGOOL_PASSWORD') ?: 'password';
 
-        $username = 'username';
-        $password = 'password';
+        $config = Config::create($username, $password);
+        $client = Client::create($config);
 
-        $client = Client::create($username, $password);
-        $client->setHttpClient(new \stdClass());
-    }
-
-    public function testGetHttpClient()
-    {
-        $username = 'username';
-        $password = 'password';
-
-        $client = Client::create($username, $password);
-        $client->setHttpClient(new \Http\Mock\Client());
-
-        $this->assertInstanceOf(HttpClient::class, $client->getHttpClient());
+        var_dump($client->getUserInfo());
     }
 }
