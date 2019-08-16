@@ -4,10 +4,14 @@ namespace Nekofar\Virgool;
 
 
 use Dotenv\Dotenv;
+use Http\Client\Exception;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {
+    /**
+     *
+     */
     public function testCreate()
     {
         $username = getenv('VIRGOOL_USERNAME') ?: 'username';
@@ -19,6 +23,9 @@ class ClientTest extends TestCase
         $this->assertInstanceOf(Client::class, $client);
     }
 
+    /**
+     * @throws Exception
+     */
     public function testGetUserInfo()
     {
         $username = getenv('VIRGOOL_USERNAME') ?: 'username';
@@ -27,9 +34,41 @@ class ClientTest extends TestCase
         $config = Config::create($username, $password);
         $client = Client::create($config);
 
-        var_dump($client->getUserInfo());
+        $this->assertArrayHasKey('user', $client->getUser());
     }
 
+    /**
+     * @throws Exception
+     */
+    public function testGetTopics()
+    {
+        $username = getenv('VIRGOOL_USERNAME') ?: 'username';
+        $password = getenv('VIRGOOL_PASSWORD') ?: 'password';
+
+        $config = Config::create($username, $password);
+        $client = Client::create($config);
+
+        $this->assertArrayHasKey('topics', $client->getTopics());
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testGetPosts()
+    {
+        $username = getenv('VIRGOOL_USERNAME') ?: 'username';
+        $password = getenv('VIRGOOL_PASSWORD') ?: 'password';
+
+        $config = Config::create($username, $password);
+        $client = Client::create($config);
+
+        $this->assertArrayHasKey('data', $client->getPosts());
+    }
+
+
+    /**
+     *
+     */
     protected function setUp(): void
     {
         parent::setUp();

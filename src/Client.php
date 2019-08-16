@@ -9,6 +9,8 @@ namespace Nekofar\Virgool;
 
 use Http\Client\HttpClient;
 use JsonMapper;
+use Nekofar\Virgool\Client\PostTrait;
+use Nekofar\Virgool\Client\TopicTrait;
 use Nekofar\Virgool\Client\UserTrait;
 
 /**
@@ -17,6 +19,8 @@ use Nekofar\Virgool\Client\UserTrait;
 class Client
 {
     use UserTrait;
+    use TopicTrait;
+    use PostTrait;
 
     /**
      * @var HttpClient
