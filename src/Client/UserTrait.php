@@ -29,12 +29,28 @@ trait UserTrait
 
     /**
      *
+     * @param array $args
+     *
+     * @return mixed
+     *
      * @throws Exception
      */
-    public function getUserInfo()
+    public function getUser(array $args = [])
     {
-        $resp = $this->httpClient->get('/user/info');
+        $args = array_merge(
+            [
+                'hash' => '',
+            ],
+            $args
+        );
 
-        return json_decode($resp->getBody());
+        // Get current user info if no hash presents.
+        $path = $args['hash'] ? '/user/' . $args['hash'] : '/user/info';
+
+        $resp = $this->httpClient->get($path);
+
+        $json = json_decode($resp->getBody(), true);
+
+        return $json;
     }
 }
