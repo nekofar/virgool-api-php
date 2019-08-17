@@ -14,6 +14,7 @@
 [![Travis (.com) branch](https://img.shields.io/travis/com/nekofar/virgool-api-php/master.svg)][3]
 [![Codecov](https://img.shields.io/codecov/c/gh/nekofar/virgool-api-php.svg)][4]
 [![Packagist](https://img.shields.io/packagist/l/nekofar/virgool.svg)][2]
+[![Twitter: nekofar](https://img.shields.io/twitter/follow/nekofar.svg?style=flat)][7]
 
 > This is a PHP wrapper for the [Virgool][6] API.
 
@@ -39,7 +40,8 @@ Use your username and password to access your own account.
 ```php
 use \Nekofar\Virgool\Client;
 
-$client = Client::create('username', 'password')
+$config = Config::create('username', 'password');
+$client = Client::create($config);
 
 try {
     $user = $client->getUser();
@@ -68,3 +70,4 @@ composer test
 [4]: https://codecov.io/gh/nekofar/virgool-api-php
 [5]: https://packagist.org/providers/php-http/client-implementation
 [6]: https://virgool.io
+[7]: https://twitter.com/nekofar
