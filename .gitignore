@@ -77,3 +77,7 @@ composer.phar
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
 
+/http-client.env.json
+/.phpunit.result.cache
+/clover.xml
+/.env
