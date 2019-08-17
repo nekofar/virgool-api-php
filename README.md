@@ -1,3 +1,12 @@
+-----
+
+<p align="center">
+    <strong>Please consider this library is under active development and, it's not ready to use in production.</strong>
+</p>
+
+-----
+
+
 # Virgool PHP API
 
 [![Packagist Version](https://img.shields.io/packagist/v/nekofar/virgool.svg)][1]
