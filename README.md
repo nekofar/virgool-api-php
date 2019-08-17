@@ -42,7 +42,7 @@ use \Nekofar\Virgool\Client;
 $client = Client::create('username', 'password')
 
 try {
-    $user = $client->getUserInfo();
+    $user = $client->getUser();
 
     echo 'Name: ' . $user->name . PHP_EOL;
     echo 'User: ' . $user->username . PHP_EOL;
